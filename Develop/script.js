@@ -1,9 +1,10 @@
 // Set Applicable Special Characters for random generator
 const specialCharacters = "!@#$%&*/\|";
+const generateButton = document.getElementById('generateBtn')
 
 // Write password to the #password input
 function writePassword() {
-  var password = generateButton();
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -11,7 +12,7 @@ function writePassword() {
 }
 
 // Assignment code here
-var generateButton = function() {
+var generatePassword = function() {
   window.alert("Please set your password parameters.");
   // Prompts to record pw parameters starting with Number of Characters in Password
   var passwordLength = window.prompt("Choose how many characters long you would like your password, it can be between 8 and 128 total characters long.");
@@ -63,7 +64,7 @@ var generateButton = function() {
     }
   };
 
-  // Parameter count for true values
+  // If statements for when parameters are true
   if (lowerCase === true) {
     minimumLowerCase = parametersArray.getLowerCase();
     minimumCount++;
@@ -81,17 +82,25 @@ var generateButton = function() {
     minimumCount++;
   }
 
-
   //Rerun Password parameters if atleast one parameter is not selected
   if(lowerCase === false && upperCase === false && number === false && special === false) {
     window.alert("You must select at least One Password Parameter: \n1. Lowercase\n2. Uppercase\n3. Number\n4. Special Character")
     generateButton();
   }
 
+  //Random Password Function and Loop
+  var randomPasswordGenerated = "";
 
-  // Get references to the #generate element
-  var generateBtn = document.querySelector("#generate");
+  for (let i=0; i < (parseInt(passwordLength) - minimumCount); i++) {
+    var randomNumberPicked = Math.floor(Math.random() * 4);
 
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
+    randomPasswordGenerated += randomNumberPicked;
+  }
+
+  randomPasswordGenerated += minimumLowerCase;
+  randomPasswordGenerated += minimumUpperCase;
+  randomPasswordGenerated += minimumNumber;
+  randomPasswordGenerated += minimumSpecialCharacter;
+
+  return randomPasswordGenerated;
 }
