@@ -102,5 +102,9 @@ var generatePassword = function() {
   randomPasswordGenerated += minimumNumber;
   randomPasswordGenerated += minimumSpecialCharacter;
 
+  // Show Random Password Generated in #password
+  var displayPassword = document.querySelector("#password");
+  displayPassword.append(randomPasswordGenerated);
+
   return randomPasswordGenerated;
 }
