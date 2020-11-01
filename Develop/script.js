@@ -1,7 +1,11 @@
+// Set Applicable Special Characters for random generator
+const specialCharacters = "!@#$%&*/\|";
+
 // Write password to the #password input
 function writePassword() {
   var password = generateButton();
   var passwordText = document.querySelector("#password");
+
   passwordText.value = password;
 
 }
@@ -12,6 +16,7 @@ var generateButton = function() {
   // Prompts to record pw parameters starting with Number of Characters in Password
   var passwordLength = window.prompt("Choose how many characters long you would like your password, it can be between 8 and 128 total characters long.");
   console.log(passwordLength);
+  // Confirm length is valid or ask again
   if (passwordLength <= 7 || passwordLength >= 129) {
     window.alert("That is not a valid password length, please try again.");
     window.prompt("Choose how many characters long you would like your password, it can be between 8 and 128 total characters long.");;
@@ -33,8 +38,48 @@ var generateButton = function() {
   var special = confirm("Do you want Special Characters in your password?");
   console.log(special);
 
-  
+  // Running count for Parameters
+  var minimumCount = 0;
 
+  // Set empty minimums for parameters to start
+  var minimumLowerCase = "";
+  var minimumUpperCase = "";
+  var minimumNumber = "";
+  var minimumSpecialCharacter = "";
+
+  // Parameter Array functions using CharCode
+  var parametersArray = {
+    getLowerCase: function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+    },
+    getUpperCase: function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+    },
+    getNumber: function() {
+      return String.fromCharCode(Math.floor(Math.random() *10 + 48));
+    },
+    getSpecialCharacters: function() {
+      return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+    }
+  };
+
+  // Parameter count for true values
+  if (lowerCase === true) {
+    minimumLowerCase = parametersArray.getLowerCase();
+    minimumCount++;
+  }
+  if (upperCase === true) {
+    minimumUpperCase = parametersArray.getUpperCase();
+    minimumCount++;
+  }
+  if (number === true) {
+    minimumNumber = parametersArray.getNumber();
+    minimumCount++;
+  }
+  if (special === true) {
+    minimumSpecialCharacter = parametersArray.getSpecialCharacters();
+    minimumCount++;
+  }
 
 
   //Rerun Password parameters if atleast one parameter is not selected
