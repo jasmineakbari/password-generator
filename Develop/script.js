@@ -1,4 +1,7 @@
 // Assignment code here
+var generateButton = function() {
+  window.alert("Please set your password parameters.");
+}
 
 
 // Get references to the #generate element
