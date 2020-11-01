@@ -4,6 +4,6 @@ This is an all purpose secure, password generator. Click on the button to start 
 
 Please reload the page to remove the password if you would like to immediately generate a new password!
 
-Screenshot: <img src="./app-ss.png" />
+Screenshot: <img src="./Develop/app-ss.png" />
 
 Link to Application: <a href="https://jasmineakbari.github.io/password-generator/" target="_blank">https://jasmineakbari.github.io/password-generator/</a>
