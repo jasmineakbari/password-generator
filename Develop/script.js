@@ -73,7 +73,8 @@ var generatePassword = function() {
   //Random Password Variable and Loop
   var randomPasswordGenerated = [];
 
-  while ((parseInt(passwordLength) - minimumCount)) {
+  while ((parseInt(passwordLength) > minimumCount)) {
+    console.log(minimumCount)
     // If statements for when parameters are true
     if (lowerCase === true) {
       let getLowerChar = parametersArray.getLowerCase();
@@ -96,11 +97,13 @@ var generatePassword = function() {
       minimumCount++;
     }
   }
-  
+  console.log("length of final result", minimumLowerCase.length + minimumUpperCase.length +
+    minimumNumber.length + minimumSpecialCharacter.length)
   randomPasswordGenerated.push(minimumLowerCase.join(''));
   randomPasswordGenerated.push(minimumUpperCase.join(''));
   randomPasswordGenerated.push(minimumNumber.join(''));
   randomPasswordGenerated.push(minimumSpecialCharacter.join(''));
+  console.log(randomPasswordGenerated)
 
   // Show Random Password Generated in #password
   var displayPassword = document.querySelector("#password");
