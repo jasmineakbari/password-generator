@@ -73,20 +73,20 @@ var generatePassword = function() {
   //Random Password Variable and Loop
   var randomPasswordGenerated = [];
 
-  while ((parseInt(passwordLength) > minimumCount)) {
+  while ((parseInt(passwordLength) >= minimumCount)) {
     console.log(minimumCount)
     // If statements for when parameters are true
-    if (lowerCase === true) {
+    if (lowerCase === true && minimumCount < passwordLength) {
       let getLowerChar = parametersArray.getLowerCase();
       minimumLowerCase.push(getLowerChar)
       minimumCount++;
     }
-    if (upperCase === true) {
+    if (upperCase === true && minimumCount < passwordLength) {
       let getUpperChar = parametersArray.getUpperCase();
       minimumUpperCase.push(getUpperChar)
       minimumCount++;
     }
-    if (number === true) {
+    if (number === true && minimumCount < passwordLength) {
       let getNumber = parametersArray.getNumber();
       minimumNumber.push(getNumber);
       minimumCount++;
