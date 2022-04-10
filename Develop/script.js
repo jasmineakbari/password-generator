@@ -20,7 +20,7 @@ var generatePassword = function() {
   // Confirm length is valid or ask again
   if (passwordLength <= 7 || passwordLength >= 129) {
     window.alert("That is not a valid password length, please try again.");
-    window.prompt("Choose how many characters long you would like your password, it can be between 8 and 128 total characters long.");;
+    window.prompt("Choose how many characters long you would like your password, it can be between 8 and 128 total characters long.");
   }
 
   // LowerCase
@@ -43,10 +43,10 @@ var generatePassword = function() {
   var minimumCount = 0;
 
   // Set empty minimums for parameters to start
-  var minimumLowerCase = "";
-  var minimumUpperCase = "";
-  var minimumNumber = "";
-  var minimumSpecialCharacter = "";
+  var minimumLowerCase = [];
+  var minimumUpperCase = [];
+  var minimumNumber = [];
+  var minimumSpecialCharacter = [];
 
   // Parameter Array functions using CharCode
   var parametersArray = {
@@ -64,47 +64,47 @@ var generatePassword = function() {
     }
   };
 
-  // If statements for when parameters are true
-  if (lowerCase === true) {
-    minimumLowerCase = parametersArray.getLowerCase();
-    minimumCount++;
-  }
-  if (upperCase === true) {
-    minimumUpperCase = parametersArray.getUpperCase();
-    minimumCount++;
-  }
-  if (number === true) {
-    minimumNumber = parametersArray.getNumber();
-    minimumCount++;
-  }
-  if (special === true) {
-    minimumSpecialCharacter = parametersArray.getSpecialCharacters();
-    minimumCount++;
-  }
-
   //Rerun Password parameters if atleast one parameter is not selected
   if(lowerCase === false && upperCase === false && number === false && special === false) {
     window.alert("You must select at least One Password Parameter: \n1. Lowercase\n2. Uppercase\n3. Number\n4. Special Character")
     generateButton();
   }
 
-  //Random Password Function and Loop
-  var randomPasswordGenerated = "";
+  //Random Password Variable and Loop
+  var randomPasswordGenerated = [];
 
-  for (let i=0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 4);
-
-    randomPasswordGenerated += randomNumberPicked;
+  while ((parseInt(passwordLength) - minimumCount)) {
+    // If statements for when parameters are true
+    if (lowerCase === true) {
+      let getLowerChar = parametersArray.getLowerCase();
+      minimumLowerCase.push(getLowerChar)
+      minimumCount++;
+    }
+    if (upperCase === true) {
+      let getUpperChar = parametersArray.getUpperCase();
+      minimumUpperCase.push(getUpperChar)
+      minimumCount++;
+    }
+    if (number === true) {
+      let getNumber = parametersArray.getNumber();
+      minimumNumber.push(getNumber);
+      minimumCount++;
+    }
+    if (special === true) {
+      let getSpecialChar = parametersArray.getSpecialCharacters();
+      minimumSpecialCharacter.push(getSpecialChar)
+      minimumCount++;
+    }
   }
-
-  randomPasswordGenerated += minimumLowerCase;
-  randomPasswordGenerated += minimumUpperCase;
-  randomPasswordGenerated += minimumNumber;
-  randomPasswordGenerated += minimumSpecialCharacter;
+  
+  randomPasswordGenerated.push(minimumLowerCase.join(''));
+  randomPasswordGenerated.push(minimumUpperCase.join(''));
+  randomPasswordGenerated.push(minimumNumber.join(''));
+  randomPasswordGenerated.push(minimumSpecialCharacter.join(''));
 
   // Show Random Password Generated in #password
   var displayPassword = document.querySelector("#password");
-  displayPassword.append(randomPasswordGenerated);
+  displayPassword.append(randomPasswordGenerated.join(''));
 
   return randomPasswordGenerated;
 }
