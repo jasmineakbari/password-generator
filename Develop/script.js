@@ -76,17 +76,17 @@ var generatePassword = function() {
   while ((parseInt(passwordLength) >= minimumCount)) {
     console.log(minimumCount)
     // If statements for when parameters are true
-    if (lowerCase === true && minimumCount < passwordLength) {
+    if (lowerCase === true) {
       let getLowerChar = parametersArray.getLowerCase();
       minimumLowerCase.push(getLowerChar)
       minimumCount++;
     }
-    if (upperCase === true && minimumCount < passwordLength) {
+    if (upperCase === true) {
       let getUpperChar = parametersArray.getUpperCase();
       minimumUpperCase.push(getUpperChar)
       minimumCount++;
     }
-    if (number === true && minimumCount < passwordLength) {
+    if (number === true) {
       let getNumber = parametersArray.getNumber();
       minimumNumber.push(getNumber);
       minimumCount++;
