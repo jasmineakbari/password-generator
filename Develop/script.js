@@ -39,10 +39,10 @@ var generatePassword = function() {
   var special = confirm("Do you want Special Characters in your password?");
   console.log(special);
 
-  // Running count for Parameters
+  // Running count for Parameters that maxes out once passwordLength value is reached
   var minimumCount = 0;
 
-  // Set empty minimums for parameters to start
+  // Set empty arrays for all parameters to start
   var minimumLowerCase = [];
   var minimumUpperCase = [];
   var minimumNumber = [];
@@ -70,7 +70,7 @@ var generatePassword = function() {
     generateButton();
   }
 
-  //Random Password Variable and Loop
+  // Empty array to push end product into
   var randomPasswordGenerated = [];
 
   while ((parseInt(passwordLength) > minimumCount)) {
@@ -97,8 +97,8 @@ var generatePassword = function() {
       minimumCount++;
     }
   }
-  console.log("length of final result", minimumLowerCase.length + minimumUpperCase.length +
-    minimumNumber.length + minimumSpecialCharacter.length)
+  
+  // Push all the random characters into a final string
   randomPasswordGenerated.push(minimumLowerCase.join(''));
   randomPasswordGenerated.push(minimumUpperCase.join(''));
   randomPasswordGenerated.push(minimumNumber.join(''));
